@@ -2,43 +2,43 @@
 Analyzing data set on New York Air bnb
 
 Team members: <br>
-Drishti Hoskote, PES1201801283
-Bhavana MV, PES120180XXXX
-Sashwat Anagolum, PES120180XXXX
+Drishti Hoskote, PES1201801283 <br>
+Bhavana MV, PES120180XXXX <br>
+Sashwat Anagolum, PES120180XXXX <br><br>
 
-About the dataset:
-Since 2008, guests and hosts have used Airbnb to expand on traveling 
-possibilities and present more unique, personalized way of experiencing 
-the world. This dataset describes the listing activity and metrics in 
-NYC, NY for 2019. This data file includes all needed information to find 
-out more about hosts, geographical availability, necessary metrics to 
-make predictions and draw conclusions.
+About the dataset: <br>
+Since 2008, guests and hosts have used Airbnb to expand on traveling <br>
+possibilities and present more unique, personalized way of experiencing <br>
+the world. This dataset describes the listing activity and metrics in <br>
+NYC, NY for 2019. This data file includes all needed information to find <br>
+out more about hosts, geographical availability, necessary metrics to <br>
+make predictions and draw conclusions. <br><br>
 
-Sources:
-Kaggle
-Inside Airbnb
+Sources: <br>
+Kaggle <br>
+Inside Airbnb <br>
 
-Inspiration:
-What can we learn about different hosts and areas?
-What can we learn from predictions? (ex: locations, prices, reviews, etc)
-Which hosts are the busiest and why?
-Is there any noticeable difference of traffic among different areas and what could be the reason for it?
+Inspiration: <br>
+What can we learn about different hosts and areas? <br>
+What can we learn from predictions? (ex: locations, prices, reviews, etc) <br>
+Which hosts are the busiest and why? <br>
+Is there any noticeable difference of traffic among different areas and what could be the reason for it? <br><br>
 
-Variables:
-id: listing ID
-name: name of the listing
-host_id: host ID
-host_name: name of the host
-neighbourhood_group: location
-neighbourhood: area
-latitude: latitude coordinates
-longitude: longitude coordinates
-room_type: listing space type
-price: price in dollars
-minimum_nights: amount of nights minimum
-number_of_reviews: number of reviews
-last_review: latest review
-reviews_per_month: number of reviews per month
-calculated_host_listings_count: amount of listing per host
-availability_365: number of days when listing is available for booking
+Variables: <br>
+id: listing ID<br>
+name: name of the listing <br>
+host_id: host ID <br>
+host_name: name of the host <br>
+neighbourhood_group: location <br>
+neighbourhood: area <br>
+latitude: latitude coordinates <br>
+longitude: longitude coordinates <br>
+room_type: listing space type <br>
+price: price in dollars <br>
+minimum_nights: amount of nights minimum <br>
+number_of_reviews: number of reviews <br>
+last_review: latest review <br>
+reviews_per_month: number of reviews per month <br>
+calculated_host_listings_count: amount of listing per host <br>
+availability_365: number of days when listing is available for booking <br>
 
