@@ -1,7 +1,7 @@
 # IDS_project2019
 Analyzing data set on New York Air bnb
 
-Team members:
+Team members: <br>
 Drishti Hoskote, PES1201801283
 Bhavana MV, PES120180XXXX
 Sashwat Anagolum, PES120180XXXX
