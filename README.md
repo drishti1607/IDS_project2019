@@ -16,7 +16,7 @@ make predictions and draw conclusions. <br><br>
 
 Sources: <br>
 Kaggle <br>
-Inside Airbnb <br>
+Inside Airbnb <br><br>
 
 Inspiration: <br>
 What can we learn about different hosts and areas? <br>
