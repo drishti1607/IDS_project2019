@@ -4,7 +4,7 @@ Analyzing data set on New York Air bnb
 Team members: <br>
 Drishti Hoskote, PES1201801283 <br>
 Bhavana MV, PES120180XXXX <br>
-Sashwat Anagolum, PES120180XXXX <br><br>
+Sashwat Anagolum, PES1201802159 <br><br>
 
 About the dataset: <br>
 Since 2008, guests and hosts have used Airbnb to expand on traveling <br>
