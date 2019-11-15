@@ -1,4 +1,7 @@
 Random visuals that would make our project cooler (also boring visuals that we have to do):
+
+Use cleanedData.csv to check for normality
+Use scaledData.csv (cleaned and scaled) for other stuffs
 -----------------------------------------------------------------
 • A scatter plot showing the mean rentals of AirBnBs in each neighbourhood, with each point located according to the mean location of AirBnBs in that neighbourhood
 
@@ -8,4 +11,4 @@ Random visuals that would make our project cooler (also boring visuals that we h
 
 • Correlation coefficients for all the variables (bonus points if its colored and stuff)
 
-• Think of some other cool stuff do add
+• Think of some other cool stuff to add

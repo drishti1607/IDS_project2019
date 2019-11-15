@@ -2,7 +2,7 @@ import pandas as pd
 import functools
 import matplotlib.pyplot as plt
 
-data = pd.read_csv('./data/AB_NYC.csv')
+data = pd.read_csv('./cleanedData.csv')
 
 
 def findClosestNeighbourhood(location, meanLocations):
@@ -131,20 +131,20 @@ def cleanData(data):
     Drop redundant columns, clean data, and fill in missing values.
     """
     rows = data.shape[0]
-    data.drop(['name', 'host_name'], axis=1, inplace=True)
-    # Fix missing values in the last_review and reviews_per_month cols
-    data.last_review.fillna(0, inplace=True)
-    data.reviews_per_month.fillna(0, inplace=True)
+    # data.drop(['name', 'host_name'], axis=1, inplace=True)
+    # # Fix missing values in the last_review and reviews_per_month cols
+    # data.last_review.fillna(0, inplace=True)
+    # data.reviews_per_month.fillna(0, inplace=True)
 
-    # Fill in the missing neighbourhood values
-    fillNeighbourhoodValues(data, rows)
-    fillMinNightValues(data, rows)
+    # # Fill in the missing neighbourhood values
+    # fillNeighbourhoodValues(data, rows)
+    # fillMinNightValues(data, rows)
 
     # Scale some of the numerical columns
     scale(data, ['price', 'minimum_nights', 'number_of_reviews',
         'reviews_per_month', 'availability_365'], rows)
 
-    data.to_csv('./data/cleanedData.csv')
+    data.to_csv('./scaledData.csv')
 
 
 cleanData(data)
