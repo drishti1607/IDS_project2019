@@ -1,9 +1,12 @@
 import pandas as pd
 import functools
 import matplotlib.pyplot as plt
+import os
+import numpy as np
 
 data = pd.read_csv('./cleanedData.csv')
 
+# print(data)
 
 def findClosestNeighbourhood(location, meanLocations):
     """
@@ -113,7 +116,7 @@ def scale(data, colsList, rows):
     """
     mean = 0
     stdDev = 0
-
+    
     for col in colsList:
         mean = sum(list(data[col]))/rows
 
@@ -147,4 +150,28 @@ def cleanData(data):
     data.to_csv('./scaledData.csv')
 
 
-cleanData(data)
+# cleanData(data)
+
+def scaleL(data):
+    rows = data.shape[0]
+    scale(data,['latitude','longitude'], rows)
+    data.to_csv('./scaledData2.csv')
+    os.remove('./scaledData.csv')
+    os.rename('./scaledData2.csv', './scaledData.csv')
+
+data1 = pd.read_csv('./scaledData.csv')
+# scaleL(data1)
+
+'''
+numCol = data1._get_numeric_data().columns
+numCol = list(set(numCol))
+remove = ['id', 'host_id', 'Unnamed: 0', 'calculated_host_listings_count', 'Unnamed: 0.1.1', 'Unnamed: 0.1']
+for i in remove:
+    numCol.remove(i)
+print(numCol)
+for i in numCol:
+    print(i)
+    print(data1[i].mean())
+    print(data1[i].std())
+    print('\n')
+'''
