@@ -66,6 +66,7 @@ def neighbourhoodPricePlot():
     for i in meanLocationDict:
         # print(i)
         size = nPriceDict[i]/meanPrice
+        '''
         if i in brooklynList:
             c = "r"
         elif i in manhattanList:
@@ -76,9 +77,10 @@ def neighbourhoodPricePlot():
             c = "g"
         elif i in statenList:
             c = "k"
+        '''
         xValue.append(meanLocationDict[i][0])
         yValue.append(meanLocationDict[i][1])
-        plt.scatter(xValue, yValue, color = c, s = abs(size)*2) 
+        plt.scatter(xValue, yValue, color = c, s = abs(size)*2, alpha = 0.3) 
     
     plt.xlabel('Latitude')
     plt.ylabel('Longitude')
@@ -94,6 +96,7 @@ def airBnBinEachNeighbourhood():
     manhattanCount = 0
     queensCount = 0
     bronxCount = 0
+    statenCount = 0
     for i in data['neighbourhood_group']:
         if i == 'Brooklyn':
             brooklynCount+=1
@@ -103,10 +106,12 @@ def airBnBinEachNeighbourhood():
             queensCount+=1
         elif i == 'Bronx':
             bronxCount+=1
-    objects = ('Brooklyn','Manhattan','Queens','Bronx')
+        elif i == 'Staten Island':
+            statenCount+=1
+    objects = ('Manhattan','Brooklyn','Queens','Bronx','Staten Island')
     print(objects)
     x = np.arange(len(objects))
-    y = [brooklynCount, manhattanCount, queensCount, bronxCount]
+    y = [manhattanCount, brooklynCount, queensCount, bronxCount, statenCount]
     print(y)
     plt.bar(x, y, align='center', alpha=0.5)
     plt.xticks(x, objects)
@@ -121,7 +126,7 @@ def airBnBinEachNeighbourhood():
 # bar chart with pricing of different rooms in different neighbourhood groups
 
 def priceRoomNeighbourhood():
-    groups = 4
+    groups = 5
     data2 = pd.read_csv('./cleanedData.csv', index_col="neighbourhood_group")
 
     brooklyn = data2.loc[['Brooklyn'],['room_type','price']]
@@ -180,10 +185,24 @@ def priceRoomNeighbourhood():
             bronxDict['Shared room'].append(bronxPrice[j])
         j+=1
     
-    # Brooklyn, Manhattan, Queens, Bronx
-    pricePvtRoom = [st.mean(brooklynDict['Private room']), st.mean(manhattanDict['Private room']), st.mean(queensDict['Private room']), st.mean(bronxDict['Private room'])]
-    priceEntire = [st.mean(brooklynDict['Entire home/apt']), st.mean(manhattanDict['Entire home/apt']), st.mean(queensDict['Entire home/apt']), st.mean(bronxDict['Entire home/apt'])]
-    priceShare = [st.mean(brooklynDict['Shared room']), st.mean(manhattanDict['Shared room']), st.mean(queensDict['Shared room']), st.mean(bronxDict['Shared room'])]
+    staten = data2.loc[['Staten Island'],['room_type','price']]
+    statenDict = {'Private room': [], 'Entire home/apt': [], 'Shared room': []}
+    statenPrice = staten['price'].tolist()
+    statenRoom = staten['room_type'].tolist()
+    j = 0
+    for i in statenRoom:
+        if i == 'Private room':
+            statenDict['Private room'].append(statenPrice[j])
+        elif i == 'Entire home/apt':
+            statenDict['Entire home/apt'].append(statenPrice[j])
+        elif i == 'Shared room':
+            statenDict['Shared room'].append(statenPrice[j])
+        j+=1
+
+    # Brooklyn, Manhattan, Queens, Bronx, Staten Island
+    pricePvtRoom = [ st.mean(manhattanDict['Private room']), st.mean(brooklynDict['Private room']), st.mean(queensDict['Private room']), st.mean(bronxDict['Private room']), st.mean(statenDict['Private room'])]
+    priceEntire = [st.mean(manhattanDict['Entire home/apt']), st.mean(brooklynDict['Entire home/apt']), st.mean(queensDict['Entire home/apt']), st.mean(bronxDict['Entire home/apt']), st.mean(statenDict['Entire home/apt'])]
+    priceShare = [st.mean(manhattanDict['Shared room']), st.mean(brooklynDict['Shared room']), st.mean(queensDict['Shared room']), st.mean(bronxDict['Shared room']), st.mean(statenDict['Shared room'])]
     
     fig, ax = plt.subplots()
     index = np.arange(groups)
@@ -197,7 +216,7 @@ def priceRoomNeighbourhood():
     plt.xlabel('Neighbourhood groups')
     plt.ylabel('Prices')
     plt.title('Prices of rooms in each neighbourhood group')
-    plt.xticks(index + 1.5*bar_width, ('Brooklyn', 'Manhattan', 'Queens', 'Bronx'))
+    plt.xticks(index + bar_width, ('Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island'))
     plt.legend()    
 
     plt.tight_layout()
@@ -223,7 +242,7 @@ def distancePrice():
         distance = math.sqrt(x*x + y*y)
         # distanceFromCenter.append(distance)
         print(i)
-        plt.scatter(distance, prices[i], s = area*2, c = "r", alpha = 0.5)
+        plt.scatter(distance, prices[i], s = area*2, c = "black", alpha = 0.5)
     plt.xlabel('Distance from city center')
     plt.ylabel('Prices')
     plt.title('Prices of rooms vs distance from city center')
